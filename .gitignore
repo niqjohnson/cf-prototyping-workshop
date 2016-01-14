@@ -1,0 +1,12 @@
+# mac os
+.DS_Store
+
+# Distribution / packaging
+dist/
+
+# cfpb
+opensource-checklist.md
+
+# Build artifacts
+node_modules/
+src/vendor/

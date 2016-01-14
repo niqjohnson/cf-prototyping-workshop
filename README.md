@@ -25,10 +25,14 @@
 - [Blipshot](https://chrome.google.com/webstore/detail/blipshot-%E2%80%94-one-click-scre/mdaboflcmhejfihjcbmdiebgfchigjcf)
 - Web inspector
 - [jQuery.autotype](https://github.com/mmonteleone/jquery.autotype)
+- scrollTo
+- Sticky scroll
 - Other useful JS libraries
 
 ## Creating a Capital Framework prototype
 1. Clone this repo
-2. Copy the page sample that’s closest to what you need
-3. Copy the elements you need
-4. Go!
+2. Install dependencies (node, bower, gulp)
+3. Run setup.sh
+4. Copy the page sample that’s closest to what you need
+5. Copy the elements you need
+6. Go!

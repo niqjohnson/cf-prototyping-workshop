@@ -8,7 +8,8 @@ gulp.task( 'browserSync', function() {
   var port = util.env.port || '8000';
   browserSync.init( {
     server: {
-        baseDir: "./"
-    }
+        baseDir: './'
+    },
+    startPath: './dist/'
   } );
 } );

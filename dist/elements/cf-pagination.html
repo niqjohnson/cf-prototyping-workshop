@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" dir="ltr" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" dir="ltr" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" dir="ltr" lang="en-US"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html dir="ltr" lang="en-US"> <!--<![endif]-->
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>cf-pagination</title>
+
+    <!-- Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="../js/jquery.js"></script>
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Styles -->
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" href="../css/main.ie.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="../css/main.min.css">
+    <!--<![endif]-->
+</head>
+
+<body>
+
+    <script>
+        if(document.getElementsByTagName("body")) {
+            var bodyTag = document.getElementsByTagName("body")[0];
+            bodyTag.className += " js";
+        }
+        if (document.getElementsByTagName("html")) {
+            var htmlTag = document.getElementsByTagName("html")[0];
+            var classes = htmlTag.className;
+            htmlTag.className = classes.replace("no-js", "");
+        }
+    </script>
+    <main class="avenir">
+        <div class="wrapper">
+            <h1>Pagination</h1>
+            <p>
+                <a href="https://cfpb.github.io/cf-pagination/docs/" target="_blank">
+                    cf-pagination documentation
+                    <span class="cf-icon cf-icon-external-link"></span>
+                </a>
+            </p>
+
+
+
+            <h2>Basic pagination</h2>
+            <nav class="pagination">
+                <a class="btn btn__super pagination_prev" href="#pagination_content">
+                    <span class="btn_icon__left cf-icon cf-icon-left"></span>
+                    Previous
+                </a>
+                <a class="btn btn__super pagination_next" href="#pagination_content">
+                    Next
+                    <span class="btn_icon__right cf-icon cf-icon-right"></span>
+                </a>
+                <form class="pagination_form" action="#">
+                    <label class="pagination_label"
+                           for="pagination_current-page">
+                        Page
+                        <span class="u-visually-hidden">
+                            number out of 149 total pages
+                        </span>
+                    </label>
+                    <input
+                        class="pagination_current-page"
+                        id="pagination_current-page"
+                        name="pagination_current-page"
+                        type="number" min="1" max="149"
+                        value="1">
+                    <span class="pagination_label">
+                        <span aria-hidden="true">
+                            of 149
+                        </span>
+                    </span>
+                    <button class="btn btn__link pagination_submit"
+                            id="pagination_submit"
+                            type="submit">
+                        Go
+                    </button>
+                </form>
+            </nav>
+
+
+
+        </div>
+    </main>
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -10,6 +10,6 @@ gulp.task( 'browserSync', function() {
     server: {
         baseDir: './'
     },
-    startPath: './dist/'
+    startPath: './dist/prototype/'
   } );
 } );

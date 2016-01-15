@@ -2,11 +2,11 @@
 .DS_Store
 
 # Distribution / packaging
-dist/
+# dist/
 
 # cfpb
-opensource-checklist.md
+# opensource-checklist.md
 
 # Build artifacts
 node_modules/
-src/vendor/
+# src/vendor/

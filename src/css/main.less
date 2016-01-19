@@ -15,6 +15,9 @@
 // Override the Capital Framework theme variables with colors from the brand color palette.
 @import (less) "cf-theme-overrides.less";
 
+// Import not-yet-released enhancements to Captial Framework
+@import (less) "cf-enhancements.less";
+
 // import CFPB nemo theme header and footer styles
 .nemo {
   @import "nemo.less";
@@ -22,5 +25,11 @@
   @import "nemo-shim.less";
 }
 
-// Import the prototype's custom styles
+// Import styles for the page templates
+@import (less) "content-page.less";
+
+// Import prototyping styles
 @import (less) "prototype.less";
+
+// Import the prototype's custom styles
+@import (less) "custom.less";

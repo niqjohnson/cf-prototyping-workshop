@@ -34,7 +34,7 @@ The point of prototyping isn't to write production-quality code, it's to quickly
 
 ### Install and clone
 
-Node, npm, gulp
+Node, npm, gulp (and git)
 
 Fork repo
 

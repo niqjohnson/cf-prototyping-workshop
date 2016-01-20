@@ -502,3 +502,48 @@ dt {
     min-height: 0;
   }
 }
+
+/* ==========================================================================
+   More accessible bleedbar
+   ========================================================================== */
+
+.content__bleedbar .content_wrapper:after {
+  background-color: @gray-5;
+}
+
+/* ==========================================================================
+   Lists
+   ========================================================================== */
+
+.list__links.list__related-content {
+
+  .list_link {
+    margin-top: unit(10px / @base-font-size-px, em);
+  }
+
+  .list_item + .list_item {
+    margin-top: unit(24px / @base-font-size-px, em);
+  }
+}
+
+.list_item-header {
+  margin-bottom: unit(5px / @base-font-size-px, em);
+}
+
+/* ==========================================================================
+   More standard column sizes
+   ========================================================================== */
+
+.content-l_col-2-9 {
+
+  .respond-to-min(@bp-sm-min, {
+    .grid_column(2,9);
+  });
+}
+
+.content-l_col-7-9 {
+
+  .respond-to-min(@bp-sm-min, {
+    .grid_column(7,9);
+  });
+}

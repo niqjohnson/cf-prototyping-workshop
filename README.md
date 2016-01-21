@@ -16,29 +16,49 @@ This workshop will walk you through the steps to create, share, and review simpl
 
 ## General tips
 
-**Start simple.**
+**Start simple.** I prefer to build something simple and find out where it needs more than to build something complex and find out I did too much. I’ll often start with very simple in-browser prototypes that contain just enough detail to help me validate that I’m on the right track (sometimes all it takes to start is a few paragraphs of text describing what’s going to happen on the page). I’ll test those simple prototypes however I can, then “design up” based on what I learn from that testing.
 
-Sometimes I start the page just by writing out what needs to happen on the page. Design up from there, ideally testing lots along the way to figure out when you've designed enough.
+**Copy and recycle.** As far as I can tell, there are like five basic design patterns in the world—everything else is a slight variation. Unless you have evidence to the contrary (or are explicitly trying to do something new), there’s not much reason to depart from what you know works. So, I prefer designing with a solid framework that covers all the basics (like, oh I don’t know, Capital Framework) and reusing as much of my previous work as I can. (Don’t worry if you don’t have previous work to draw from—this repository has a bunch of example components you can copy and paste to get started.)
 
-**Copy and recycle.**
+**Don’t think like a developer (even if you’re a developer).** The point of prototyping in the browser isn't to write production-quality code, it's to quickly test (and discard!) ideas. Don't worry about writing perfect code. I’m not advocating for `!important`s on every line of your CSS; I am suggesting that refactoring your Javascript for maximum performance is a task best left for later. That said, as you get more comfortable working in the browser, you can focus a little more on writing code that (if the idea is working) can be integrated into the final product.
 
-Design with a framework.
-
-Use as much past work as you can (especially if it's been validating with tests).
-
-**Don’t think like a developer (even if you’re a developer).**
-
-The point of prototyping isn't to write production-quality code, it's to quickly test (and discard!) ideas. Don't worry about doing everything perfectly.
+**Everything first.** I know designing “mobile first” is all the rage, but one of my favorite parts of designing in the browser is that I can constantly check how things feel at any screen size (because, after all, your users should have a great experience at any screen size). I load up the prototype I’m designing in at least three Chrome tabs set to different widths, and I constantly switch among them while I work. (Hot tip: set Chrome’s web inspector to appear on the right side in each tab and shrink the viewport down to screen sizes that are important to you *or* use the device emulator).
 
 ## Actually making a thing instead of reading about actually making a thing
 
+OK, time to stop talking about how awesome designing in the browser is and start doing it. Hold your excitement, though (unless command lines get you really excited)—first we need to do some setup to make the process as smooth as possible.
+
 ### Install and clone
 
-Node, npm, gulp (and git)
+This repo uses a very, very basic version of the standard CFPB front-end setup (don’t show it to any real developers, though, because many shortcuts were taken). You’ll need to make sure you have a few tools installed to get started.
 
-Fork repo
+1. **Git.** You’re reading this on GitHub, so I’m going to assume you have git installed and are comfortable with git basics (either through the command line or through a git client). If you don’t have git, get git.
 
-Clone repo
+2. **Node.** You’ll need node.js to do run all of the other things in this list. To check if you have node installed, open up your terminal and type `node -v` (or just copy and paste that). If you get something like `v0.1.0` or `v4.2.2`, you’ve already got node installed. If not, install node.
+
+3. **npm.** Node package manager, or npm, is like an app store for code stuff. You need it to install all the code stuff that makes this repo work. Go back to your terminal and type `npm -v`. If you get numbers like `2.14.7` when you enter that, you’re good. If not, install npm.
+
+4. **gulp.** Gulp processes all the components that make up your prototype into a nice, tidy package. It also makes it so your browser magically refreshes every time you save your work, so you really want it. Back to your terminal one more time. Type `gulp -v`. If you get a message back like `CLI version 3.9.0`, you’ve got gulp. Otherwise, install gulp (if you’ve got homebrew, just type `brew install gulp` in your terminal).
+
+5. **Fork and clone this repository.** First, fork this repo in GitHub. Then, clone your fork to your machine using whatever interface you prefer (command line or a git client) and wherever you like to keep your repos.
+
+6. **Initial setup.** In your terminal, go to your fork. For example:
+```
+cd ~/Projects/cf-prototyping-workshop
+```
+Then install all the code stuff you need to turn your machine into a browser-designing powerhouse by typing:
+```
+npm install
+```
+Wait for that to finish (hopefully without errors). Then do an initial processing of all the stuff by typing:
+```
+gulp
+```
+Finally (this is the best part), turn your machine into a web server that MAGICALLY REFRESHES EVERY TIME YOU SAVE CHANGES by typing:
+```
+gulp watch
+```
+That should open up a tab in your default browser that loads `http://localhost:3000/dist/prototype/`. You’re all set to start working!
 
 ### Choose a template
 

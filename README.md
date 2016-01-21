@@ -34,47 +34,61 @@ This repo uses a very, very basic version of the standard CFPB front-end setup (
 
 <ol>
     <li>
-        **Git.** You’re reading this on GitHub, so I’m going to assume you have git installed and are comfortable with git basics (either through the command line or through a git client). If you don’t have git, get git.
+        <p>
+            <strong>Git.</strong> You’re reading this on GitHub, so I’m going to assume you have git installed and are comfortable with git basics (either through the command line or through a git client). If you don’t have git, get git.
+        </p>
     </li>
     <li>
-        **Node.** You’ll need node.js to do run all of the other things in this list. To check if you have node installed, open up your terminal and type `node -v` (or just copy and paste that). If you get something like `v0.1.0` or `v4.2.2`, you’ve already got node installed. If not, install node.
+        <p>
+            <strong>Node.</strong> You’ll need node.js to do run all of the other things in this list. To check if you have node installed, open up your terminal and type `node -v` (or just copy and paste that). If you get something like <code>v0.1.0</code> or <code>v4.2.2</code>, you’ve already got node installed. If not, install node.
+        </p>
     </li>
     <li>
-        **npm.** Node package manager, or npm, is like an app store for code stuff. You need it to install all the code stuff that makes this repo work. Go back to your terminal and type `npm -v`. If you get numbers like `2.14.7` when you enter that, you’re good. If not, install npm.
+        <p>
+            <strong>npm.</strong> Node package manager, or npm, is like an app store for code stuff. You need it to install all the code stuff that makes this repo work. Go back to your terminal and type <code>npm -v</code>. If you get numbers like <code>2.14.7</code> when you enter that, you’re good. If not, install npm.
+        </p>
     </li>
     <li>
-        **gulp.** Gulp processes all the components that make up your prototype into a nice, tidy package. It also makes it so your browser magically refreshes every time you save your work, so you really want it. Back to your terminal one more time. Type `gulp -v`. If you get a message back like `CLI version 3.9.0`, you’ve got gulp. Otherwise, install gulp (if you’ve got homebrew, just type `brew install gulp` in your terminal).
+        <p>
+            <strong>gulp.</strong> Gulp processes all the components that make up your prototype into a nice, tidy package. It also makes it so your browser magically refreshes every time you save your work, so you really want it. Back to your terminal one more time. Type <code>gulp -v</code>. If you get a message back like <code>CLI version 3.9.0</code>, you’ve got gulp. Otherwise, install gulp (if you’ve got homebrew, just type `brew install gulp` in your terminal).
+        </p>
     </li>
     <li>
-        **Fork and clone this repository.** First, fork this repo in GitHub. Then, clone your fork to your machine using whatever interface you prefer (command line or a git client) and wherever you like to keep your repos.
+        <p>
+            <strong>Fork and clone this repository.</strong> First, fork this repo in GitHub. Then, clone your fork to your machine using whatever interface you prefer (command line or a git client) and wherever you like to keep your repos.
+        </p>
     </li>
     <li>
-        **Initial setup.** In your terminal, go to your fork. For example:
+        <p>
+            <strong>Initial setup.</strong> In your terminal, go to your fork. For example:
+        </p>
+        <div class="highlight">
+            <pre>cd ~/Projects/cf-prototyping-workshop</pre>
+        </div>
+        <p>
+            Then install all the code stuff you need to turn your machine into a browser-designing powerhouse by typing:
+        </p>
 
+        <div class="highlight">
+            <pre>npm install</pre>
+        </div>
+        <p>
+            Wait for that to finish (hopefully without errors). Then do an initial processing of all the stuff by typing:
+        </p>
 
-        ```
-        cd ~/Projects/cf-prototyping-workshop
-        ```
+        <div class="highlight">
+            <pre>gulp</pre>
+        </div>
+        <p>
+            Finally (this is the best part), turn your machine into a web server that MAGICALLY REFRESHES EVERY TIME YOU SAVE CHANGES by typing:
+        </p>
 
-        Then install all the code stuff you need to turn your machine into a browser-designing powerhouse by typing:
-
-        ```
-        npm install
-        ```
-
-        Wait for that to finish (hopefully without errors). Then do an initial processing of all the stuff by typing:
-
-        ```
-        gulp
-        ```
-
-        Finally (this is the best part), turn your machine into a web server that MAGICALLY REFRESHES EVERY TIME YOU SAVE CHANGES by typing:
-
-        ```
-        gulp watch
-        ```
-
-        That should open up a tab in your default browser that loads `http://localhost:3000/dist/prototype/`. You’re all set to start working!
+        <div class="highlight">
+            <pre>gulp watch</pre>
+        </div>
+        <p>
+            That should open up a tab in your default browser that loads <code>http://localhost:3000/dist/prototype/</code>. You’re all set to start working!
+        </p>
     </li>
 </ol>
 

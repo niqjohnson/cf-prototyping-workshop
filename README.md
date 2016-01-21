@@ -32,33 +32,51 @@ OK, time to stop talking about how awesome designing in the browser is and start
 
 This repo uses a very, very basic version of the standard CFPB front-end setup (don’t show it to any real developers, though, because many shortcuts were taken). You’ll need to make sure you have a few tools installed to get started.
 
-1. **Git.** You’re reading this on GitHub, so I’m going to assume you have git installed and are comfortable with git basics (either through the command line or through a git client). If you don’t have git, get git.
+<ol>
+    <li>
+        **Git.** You’re reading this on GitHub, so I’m going to assume you have git installed and are comfortable with git basics (either through the command line or through a git client). If you don’t have git, get git.
+    </li>
+    <li>
+        **Node.** You’ll need node.js to do run all of the other things in this list. To check if you have node installed, open up your terminal and type `node -v` (or just copy and paste that). If you get something like `v0.1.0` or `v4.2.2`, you’ve already got node installed. If not, install node.
+    </li>
+    <li>
+        **npm.** Node package manager, or npm, is like an app store for code stuff. You need it to install all the code stuff that makes this repo work. Go back to your terminal and type `npm -v`. If you get numbers like `2.14.7` when you enter that, you’re good. If not, install npm.
+    </li>
+    <li>
+        **gulp.** Gulp processes all the components that make up your prototype into a nice, tidy package. It also makes it so your browser magically refreshes every time you save your work, so you really want it. Back to your terminal one more time. Type `gulp -v`. If you get a message back like `CLI version 3.9.0`, you’ve got gulp. Otherwise, install gulp (if you’ve got homebrew, just type `brew install gulp` in your terminal).
+    </li>
+    <li>
+        **Fork and clone this repository.** First, fork this repo in GitHub. Then, clone your fork to your machine using whatever interface you prefer (command line or a git client) and wherever you like to keep your repos.
+    </li>
+    <li>
+        **Initial setup.** In your terminal, go to your fork. For example:
 
-2. **Node.** You’ll need node.js to do run all of the other things in this list. To check if you have node installed, open up your terminal and type `node -v` (or just copy and paste that). If you get something like `v0.1.0` or `v4.2.2`, you’ve already got node installed. If not, install node.
 
-3. **npm.** Node package manager, or npm, is like an app store for code stuff. You need it to install all the code stuff that makes this repo work. Go back to your terminal and type `npm -v`. If you get numbers like `2.14.7` when you enter that, you’re good. If not, install npm.
+        ```
+        cd ~/Projects/cf-prototyping-workshop
+        ```
 
-4. **gulp.** Gulp processes all the components that make up your prototype into a nice, tidy package. It also makes it so your browser magically refreshes every time you save your work, so you really want it. Back to your terminal one more time. Type `gulp -v`. If you get a message back like `CLI version 3.9.0`, you’ve got gulp. Otherwise, install gulp (if you’ve got homebrew, just type `brew install gulp` in your terminal).
+        Then install all the code stuff you need to turn your machine into a browser-designing powerhouse by typing:
 
-5. **Fork and clone this repository.** First, fork this repo in GitHub. Then, clone your fork to your machine using whatever interface you prefer (command line or a git client) and wherever you like to keep your repos.
+        ```
+        npm install
+        ```
 
-6. **Initial setup.** In your terminal, go to your fork. For example:
-```
-cd ~/Projects/cf-prototyping-workshop
-```
-Then install all the code stuff you need to turn your machine into a browser-designing powerhouse by typing:
-```
-npm install
-```
-Wait for that to finish (hopefully without errors). Then do an initial processing of all the stuff by typing:
-```
-gulp
-```
-Finally (this is the best part), turn your machine into a web server that MAGICALLY REFRESHES EVERY TIME YOU SAVE CHANGES by typing:
-```
-gulp watch
-```
-That should open up a tab in your default browser that loads `http://localhost:3000/dist/prototype/`. You’re all set to start working!
+        Wait for that to finish (hopefully without errors). Then do an initial processing of all the stuff by typing:
+
+        ```
+        gulp
+        ```
+
+        Finally (this is the best part), turn your machine into a web server that MAGICALLY REFRESHES EVERY TIME YOU SAVE CHANGES by typing:
+
+        ```
+        gulp watch
+        ```
+
+        That should open up a tab in your default browser that loads `http://localhost:3000/dist/prototype/`. You’re all set to start working!
+    </li>
+</ol>
 
 ### Choose a template
 

@@ -40,18 +40,39 @@ This repo uses a very, very basic version of the standard CFPB front-end setup (
     </li>
     <li>
         <p>
-            <strong>Node.</strong> You’ll need node.js to do run all of the other things in this list. To check if you have node installed, open up your terminal and type `node -v` (or just copy and paste that). If you get something like <code>v0.1.0</code> or <code>v4.2.2</code>, you’ve already got node installed. If not, install node.
+            <strong>Node.</strong> You’ll need node.js to do run all of the other things in this list. To check if you have node installed, open up your terminal and type:
+        </p>
+        <div class="highlight">
+            <pre>node -v</pre>
+        </div>
+        <p>
+            If you get something like <code>v0.1.0</code> or <code>v4.2.2</code>, you’ve already got node installed. If not, install node.
         </p>
     </li>
     <li>
         <p>
-            <strong>npm.</strong> Node package manager, or npm, is like an app store for code stuff. You need it to install all the code stuff that makes this repo work. Go back to your terminal and type <code>npm -v</code>. If you get numbers like <code>2.14.7</code> when you enter that, you’re good. If not, install npm.
+            <strong>npm.</strong> Node package manager, or npm, is like an app store for code stuff. You need it to install all the code stuff that makes this repo work. Go back to your terminal and type:
+        </p>
+        <div class="highlight">
+            <pre>npm -v</pre>
+        </div>
+        <p>
+            If you get numbers like <code>2.14.7</code> when you enter that, you’re good (it’s usually installed along with node). If not, install npm.
         </p>
     </li>
     <li>
         <p>
-            <strong>gulp.</strong> Gulp processes all the components that make up your prototype into a nice, tidy package. It also makes it so your browser magically refreshes every time you save your work, so you really want it. Back to your terminal one more time. Type <code>gulp -v</code>. If you get a message back like <code>CLI version 3.9.0</code>, you’ve got gulp. Otherwise, install gulp (if you’ve got homebrew, just type `brew install gulp` in your terminal).
+            <strong>gulp.</strong> Gulp processes all the components that make up your prototype into a nice, tidy package. It also makes it so your browser magically refreshes every time you save your work, so you really want it. Back to your terminal one more time. Type:
         </p>
+        <div class="highlight">
+            <pre>gulp -v</pre>
+        </div>
+        <p>
+             If you get a message back like <code>CLI version 3.9.0</code>, you’ve got gulp. Otherwise, install gulp by typing
+        </p>
+        <div class="highlight">
+            <pre>npm install --global gulp</pre>
+        </div>
     </li>
     <li>
         <p>
@@ -92,19 +113,58 @@ This repo uses a very, very basic version of the standard CFPB front-end setup (
     </li>
 </ol>
 
+### Get oriented
+
+Now that you’ve got all the requirements installed, take a look inside your local copy of `cf-prototyping-workshop`. You can ignore everything in there but the `src` folder. That’s where you’ll do all your work. Specifically, you’ll put all the HTML pages you need in `src/prototype`, all the CSS in `src/css`, all the Javascript in `src/js`, and all the images in `src/img`. Gulp will take care of processing everything in those folders to make your designs viewable and shareable in a browser.
+
+Speaking of things to ignore, you can also ignore most of the files in `src/css`; they’re all our underlying CFPB styles that will make your project look like a real CFPB page. The only file you’ll need to edit in there is `custom.less`. Go ahead and open that in your text editor of choice.
+
+If you need to write some custom Javascript for your prototype, you can plop all your code in `src/js/index.js`. Remember, designing in the browser isn’t the time to think like a front-end developer, so don’t worry about modularizing your code or anything like that. Just start writing under the “Start writing your prototype's custom JS here” line.
+
 ### Choose a template
 
-### Add some elements
+You’ll notice a couple of other folders in `src`. Let‘s start in `templates`, where you’ll see a few HTML files. Those are very generic templates for some common types of pages. Remember that tip about copying as much as you can to get your prototype started fast? Here’s where the copying starts.
+
+1. Open the template that best fits your project in your text editor. If you’re not sure which one you need, you can preview them (as long as you’ve got `gulp watch` running in a terminal tab) at `http://localhost:3000/dist/templates/{template-name}.html`.
+
+2. Select everything in that template and copy it.
+
+3. Open `src/prototype/index.html` in your text editor.
+
+4. Select everything in there and paste what you copied from the template.
+
+5. Save `index.html`.
+
+As long as you have `gulp watch` running in a terminal tab, your browser tab with `http://localhost:3000/dist/prototype/` in it will automagically refresh to show your changes. Look, you’ve got a basic page template to start with!
+
+### Add some components
+
+Odds are that the basic template you’ve now got isn’t going to exactly fit what you need in your prototype. Obviously you’ll have to add real content, but you’ll also probably need to make changes to the structure of the page by adding new components.
+
+You can add basic Captial Framework components to the page pretty easily. I’ve put a bunch of the most common components in the `src/elements` folder. (As with the templates, you can preview the components in your browser by opening `http://localhost:3000/dist/elements/cf-{whatever}.html`.) If any of those components work for you, just copy and paste their HTML into your page.
+
+If you need to use less common Capital Framework components—or if you need more info on how anything in Capital Framework works—check out the [Capital Framework documentation](https://cfpb.github.io/cf-core/docs/).
 
 ### Enhance as needed
+
+If you’re following the “start simple” rule, a prototype with basic Capital Framework components may be all you need for a first iteration. Sometimes that’s not the case (especially if you’re designing a tool with lots of interactivity). In those cases, you’ll need to enhance your prototype with custom HTML, CSS, and Javascript.
+
+Creating truly custom enhancements is way too big a topic for this workshop, but I have included a few non-Capital Framework Javascript libraries I often use in prototypes. To use any of these, add a line like this to the very end of the `<head>` of every page you need it on:
+
+```html
+<script src="../js/{library-name}.js"></script>
+```
+
+Refer to that library’s documentation to see how it works.
+
+- **[jQuery.scrollTo](http://demos.flesler.com/jquery/scrollTo/)** is a nice little library to let you smoothly scroll to any part of the page.
+- **[jquery.sticky-kit](http://leafo.net/sticky-kit/)** makes elements “sticky” as you scroll.
+
+If you find more libraries you’d like to use, adding them to your prototype is pretty easy. Just download the library’s Javascript file and drop it into `src/vendor/prototype`. If you have `gulp watch` running in a terminal tab, you just need to add the usual `<script src="../js/{library-name}.js"></script>` line to the end of the `<head>`.
 
 Fill in additional elements and interactions as needed (GitHub is a good place to look)
 
 Web inspector
-
-scrollTo
-
-Sticky scroll
 
 ### Share
 
@@ -119,3 +179,9 @@ Getting feedback can be hard (PDF, screenshots, etc.)
 [jQuery.autotype](https://github.com/mmonteleone/jquery.autotype)
 
 ### Iterate
+
+Run `gulp watch` every time you want to work.
+
+## Misc.
+
+- "Not yet" links if there's time to add tooltips

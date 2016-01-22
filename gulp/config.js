@@ -52,9 +52,6 @@ module.exports = {
   scripts: {
     entrypoint: loc.src + '/js/index.js',
     src: [
-      loc.lib + '/jquery/dist/jquery.js',
-      loc.lib + '/jquery.easing/js/jquery.easing.js',
-      loc.lib + '/capital-framework/src/cf-*/src/*.js',
       loc.src + '/js/**/*.js'
     ],
     dest: loc.dist + '/js/',
@@ -90,7 +87,8 @@ module.exports = {
       src: [
         loc.lib + '/box-sizing-polyfill/boxsizing.htc',
         loc.lib + '/html5shiv/dist/html5shiv-printshiv.min.js',
-        loc.lib + '/jquery/dist/jquery.js'
+        loc.lib + '/jquery/dist/jquery.js',
+        loc.lib + '/prototype/*.js'
       ],
       dest: loc.dist + '/js/'
     }

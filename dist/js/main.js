@@ -1,2 +1,603 @@
-!function e(n,t,a){function i(s,u){if(!t[s]){if(!n[s]){var o="function"==typeof require&&require;if(!u&&o)return o(s,!0);if(r)return r(s,!0);var c=new Error("Cannot find module '"+s+"'");throw c.code="MODULE_NOT_FOUND",c}var l=t[s]={exports:{}};n[s][0].call(l.exports,function(e){var t=n[s][1][e];return i(t?t:e)},l,l.exports,e,n,t,a)}return t[s].exports}for(var r="function"==typeof require&&require,s=0;s<a.length;s++)i(a[s]);return i}({1:[function(e,n,t){"use strict";e("./utils/nemo"),e("./utils/nemo-shim"),e("../vendor/jquery.easing/js/jquery.easing.js"),e("../vendor/cf-expandables/src/js/cf-expandables");var a=e("./utils/side-nav");$(document).ready(function(){$(".nav-secondary").length>0&&($(window).resize(function(){a.toggleCheck()}),a.toggleCheck())})},{"../vendor/cf-expandables/src/js/cf-expandables":5,"../vendor/jquery.easing/js/jquery.easing.js":6,"./utils/nemo":3,"./utils/nemo-shim":2,"./utils/side-nav":4}],2:[function(e,n,t){"use strict";var a=document.getElementsByTagName("body")[0];a.className+=" js",$(".toggle-menu").on("click",function(e){e.preventDefault(),$("nav.main ul").toggleClass("vis")})},{}],3:[function(e,n,t){function a(){c=1,$("#closeMenu").remove();var e=$(s),n=e.attr("href"),t=e.offset().left-1;$(n).css("left",t+"px");var t=e.offset().top+e.outerHeight();$(n).css("top",t+"px"),$(n).append("<a id='closeMenu' class='close' href='#'>close menu</a>"),$("a#closeMenu").click(function(e){e.preventDefault();var n=$(this).parent().attr("id");i(),$('a[href="#'+n+'"]').removeClass("active"),$('a[href="#'+n+'"]').get(0).focus(),$('a[href="#'+n+'"]').css("outline","none")});var a=$(n).show().height();$(n).hide().css("height",0),$(n).show().animate({height:a},400,function(){c=0}),$(n+" a:first").get(0).focus(),$(n+" a:first").css("outline","none"),e.addClass("active"),o=0}function i(){$(".active").removeClass("active"),$("#closeMenu").remove(),$("#subnav nav").slideUp()}function r(){var e=$("#skip-link");e.click(function(){$("#primary-content").focus()})}var s,u,o,c;$(document).ready(function(){r(),$("#header nav a").mouseenter(function(){window.clearTimeout(u);var e=$(this).attr("href");return("none"==$(e).css("display")||"/"==e)&&(i(),s=this,o=window.setTimeout(a,500)),!1}).mouseleave(function(){u=window.setTimeout(i,500),window.clearTimeout(o),o=0}).click(function(e){if(c)return!1;var n=$(this),t=n.attr("href");return"/"==t?!0:("none"==$(t).css("display")?o||c||(i(),s=this,a()):c||i(),!1)}),$("#subnav nav").mouseenter(function(){window.clearTimeout(u),window.clearTimeout(o);"#"+$(this).attr("id")}).mouseleave(function(){u=window.setTimeout(i,500)}),$(".inf input").keyup(function(){$(this).val()?$(this).addClass("filled"):$(this).removeClass("filled")}),$(".inf textarea").keyup(function(){$(this).val()?$(this).addClass("filled"):$(this).removeClass("filled")}),$(".signup,.signup2").submit(function(){var e=$(this);return e.children("fieldset").children("p:last-child").children("button").attr("disabled","disabled"),$.ajax({type:"POST",url:$(this).attr("action"),data:e.serialize(),complete:function(n,t){if(t){e.children("fieldset").hide();var a;a=e.attr("data-thanks")?e.attr("data-thanks"):"Thanks, we'll be in touch.",e.html("<p>"+a+"</p>")}else e.children("fieldset").hide(),e.append("<p>Something went wrong. Please try again later.</p>")}}),!1}),$("a > img").each(function(){$(this).parent().addClass("noStyles")}),$(".mini a").mouseup(function(){var e=$(this).attr("href");e=e.replace("http://","/"),e=e.replace("http://","/");var n="/v/topshare"+e;_gaq.push(["_trackPageview",n])}),$(".botshare a").mouseup(function(){var e=$(this).attr("href");e=e.replace("http://","/"),e=e.replace("http://","/");var n="/v/botshare"+e;_gaq.push(["_trackPageview",n])}),$("iframe").each(function(){var e=$(this).attr("src");$(this).attr("src",e+"?wmode=transparent")}),$('a[href$="pdf"]').each(function(){$(this).addClass("pdf")})}),$(function(){var e=$("#search_form label");$("#search_form #query").val()?e.fadeOut(50):e.fadeIn(50),$("#search_form #query").focus(function(){$(this).val()?e.fadeOut(50):e.fadeIn(50)}),$("#search_form #query").keyup(function(){$("#search_form #query").val()?e.fadeOut(50):e.fadeIn(50)}),$("#search_form #query").blur(function(){""==$(this).val()?e.fadeIn(50):e.fadeOut(50)})})},{}],4:[function(e,n,t){"use strict";var a={toggleCheck:function(){var e=$(".nav-secondary_link__button"),n=$(".nav-secondary .expandable_content"),t=$(".nav-secondary.expandable");"none"===e.css("display")||t.hasClass("expandable__expanded")?n.css("display","block"):n.css("display","none")}};n.exports=a},{}],5:[function(e,n,t){!function(e){e.fn.expandable=function(n){return e(this).each(function(){var n=e(this),t=n.find(".expandable_target").not(n.find(".expandable .expandable_target")),a=n.find(".expandable_cue-open").not(n.find(".expandable .expandable_cue-open")),i=n.find(".expandable_cue-close").not(n.find(".expandable .expandable_cue-close")),r=n.find(".expandable_content").not(n.find(".expandable .expandable_content")),s=n.parents(".expandable-group"),u=s.length>0&&s.data("accordion");if(u)var o=n.siblings(".expandable");this.init=function(){t.attr("aria-controls",r.attr("id")),n.hasClass("expandable__expanded")?this.expand(0):this.collapse(0),t.on("click",e.proxy(this.handleClick,this))},this.handleClick=function(e){e.preventDefault(),e.stopPropagation(),this.toggle(),u&&o.each(function(e,n){n.collapse()})},this.toggle=function(){"true"===t.attr("aria-pressed")?this.collapse():this.expand()},this.expand=function(s){a.css("display","none"),i.css("display","inline"),r.attr("aria-expanded","true"),t.attr("aria-pressed","true"),"undefined"==typeof s&&(s=e.fn.expandable.calculateExpandDuration(r.height())),n.addClass("expandable__expanded"),r.slideDown({duration:s,easing:"easeOutExpo"})},this.collapse=function(s){a.css("display","inline"),i.css("display","none"),r.attr("aria-expanded","false"),t.attr("aria-pressed","false"),"undefined"==typeof s&&(s=e.fn.expandable.calculateCollapseDuration(r.height())),n.removeClass("expandable__expanded"),r.slideUp({duration:s,easing:"easeOutExpo"})},this.init()})},e.fn.expandable.calculateExpandDuration=function(n){return e.fn.expandable.constrainValue(450,900,4*n)},e.fn.expandable.calculateCollapseDuration=function(n){return e.fn.expandable.constrainValue(350,900,2*n)},e.fn.expandable.constrainValue=function(e,n,t){return t>n?n:e>t?e:t},e(".expandable").expandable()}(jQuery)},{}],6:[function(e,n,t){jQuery.easing.jswing=jQuery.easing.swing,jQuery.extend(jQuery.easing,{def:"easeOutQuad",swing:function(e,n,t,a,i){return jQuery.easing[jQuery.easing.def](e,n,t,a,i)},easeInQuad:function(e,n,t,a,i){return a*(n/=i)*n+t},easeOutQuad:function(e,n,t,a,i){return-a*(n/=i)*(n-2)+t},easeInOutQuad:function(e,n,t,a,i){return(n/=i/2)<1?a/2*n*n+t:-a/2*(--n*(n-2)-1)+t},easeInCubic:function(e,n,t,a,i){return a*(n/=i)*n*n+t},easeOutCubic:function(e,n,t,a,i){return a*((n=n/i-1)*n*n+1)+t},easeInOutCubic:function(e,n,t,a,i){return(n/=i/2)<1?a/2*n*n*n+t:a/2*((n-=2)*n*n+2)+t},easeInQuart:function(e,n,t,a,i){return a*(n/=i)*n*n*n+t},easeOutQuart:function(e,n,t,a,i){return-a*((n=n/i-1)*n*n*n-1)+t},easeInOutQuart:function(e,n,t,a,i){return(n/=i/2)<1?a/2*n*n*n*n+t:-a/2*((n-=2)*n*n*n-2)+t},easeInQuint:function(e,n,t,a,i){return a*(n/=i)*n*n*n*n+t},easeOutQuint:function(e,n,t,a,i){return a*((n=n/i-1)*n*n*n*n+1)+t},easeInOutQuint:function(e,n,t,a,i){return(n/=i/2)<1?a/2*n*n*n*n*n+t:a/2*((n-=2)*n*n*n*n+2)+t},easeInSine:function(e,n,t,a,i){return-a*Math.cos(n/i*(Math.PI/2))+a+t},easeOutSine:function(e,n,t,a,i){return a*Math.sin(n/i*(Math.PI/2))+t},easeInOutSine:function(e,n,t,a,i){return-a/2*(Math.cos(Math.PI*n/i)-1)+t},easeInExpo:function(e,n,t,a,i){return 0==n?t:a*Math.pow(2,10*(n/i-1))+t},easeOutExpo:function(e,n,t,a,i){return n==i?t+a:a*(-Math.pow(2,-10*n/i)+1)+t},easeInOutExpo:function(e,n,t,a,i){return 0==n?t:n==i?t+a:(n/=i/2)<1?a/2*Math.pow(2,10*(n-1))+t:a/2*(-Math.pow(2,-10*--n)+2)+t},easeInCirc:function(e,n,t,a,i){return-a*(Math.sqrt(1-(n/=i)*n)-1)+t},easeOutCirc:function(e,n,t,a,i){return a*Math.sqrt(1-(n=n/i-1)*n)+t},easeInOutCirc:function(e,n,t,a,i){return(n/=i/2)<1?-a/2*(Math.sqrt(1-n*n)-1)+t:a/2*(Math.sqrt(1-(n-=2)*n)+1)+t},easeInElastic:function(e,n,t,a,i){var r=1.70158,s=0,u=a;if(0==n)return t;if(1==(n/=i))return t+a;if(s||(s=.3*i),u<Math.abs(a)){u=a;var r=s/4}else var r=s/(2*Math.PI)*Math.asin(a/u);return-(u*Math.pow(2,10*(n-=1))*Math.sin((n*i-r)*(2*Math.PI)/s))+t},easeOutElastic:function(e,n,t,a,i){var r=1.70158,s=0,u=a;if(0==n)return t;if(1==(n/=i))return t+a;if(s||(s=.3*i),u<Math.abs(a)){u=a;var r=s/4}else var r=s/(2*Math.PI)*Math.asin(a/u);return u*Math.pow(2,-10*n)*Math.sin((n*i-r)*(2*Math.PI)/s)+a+t},easeInOutElastic:function(e,n,t,a,i){var r=1.70158,s=0,u=a;if(0==n)return t;if(2==(n/=i/2))return t+a;if(s||(s=i*(.3*1.5)),u<Math.abs(a)){u=a;var r=s/4}else var r=s/(2*Math.PI)*Math.asin(a/u);return 1>n?-.5*(u*Math.pow(2,10*(n-=1))*Math.sin((n*i-r)*(2*Math.PI)/s))+t:u*Math.pow(2,-10*(n-=1))*Math.sin((n*i-r)*(2*Math.PI)/s)*.5+a+t},easeInBack:function(e,n,t,a,i,r){return void 0==r&&(r=1.70158),a*(n/=i)*n*((r+1)*n-r)+t},easeOutBack:function(e,n,t,a,i,r){return void 0==r&&(r=1.70158),a*((n=n/i-1)*n*((r+1)*n+r)+1)+t},easeInOutBack:function(e,n,t,a,i,r){return void 0==r&&(r=1.70158),(n/=i/2)<1?a/2*(n*n*(((r*=1.525)+1)*n-r))+t:a/2*((n-=2)*n*(((r*=1.525)+1)*n+r)+2)+t},easeInBounce:function(e,n,t,a,i){return a-jQuery.easing.easeOutBounce(e,i-n,0,a,i)+t},easeOutBounce:function(e,n,t,a,i){return(n/=i)<1/2.75?a*(7.5625*n*n)+t:2/2.75>n?a*(7.5625*(n-=1.5/2.75)*n+.75)+t:2.5/2.75>n?a*(7.5625*(n-=2.25/2.75)*n+.9375)+t:a*(7.5625*(n-=2.625/2.75)*n+.984375)+t},easeInOutBounce:function(e,n,t,a,i){return i/2>n?.5*jQuery.easing.easeInBounce(e,2*n,0,a,i)+t:.5*jQuery.easing.easeOutBounce(e,2*n-i,0,a,i)+.5*a+t}})},{}]},{},[1]);
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+'use strict';
+
+require( './utils/nemo' );
+require( './utils/nemo-shim' );
+require ( '../vendor/jquery.easing/js/jquery.easing.js' );
+require ( '../vendor/cf-expandables/src/js/cf-expandables' );
+
+var sideNav = require( './utils/side-nav' );
+
+$(document).ready( function () {
+
+  // Trigger secondary navigation on content pages
+  if ( $( '.nav-secondary' ).length > 0 ) {
+    $( window ).resize( function() {
+      sideNav.toggleCheck();
+    } );
+
+    sideNav.toggleCheck();
+  }
+
+  // Start writing your prototype's custom JS here
+
+
+});
+
+},{"../vendor/cf-expandables/src/js/cf-expandables":5,"../vendor/jquery.easing/js/jquery.easing.js":6,"./utils/nemo":3,"./utils/nemo-shim":2,"./utils/side-nav":4}],2:[function(require,module,exports){
+'use strict';
+
+// To play nicer with nemo, add js class to body element
+var bodyTag = document.getElementsByTagName( 'body' )[0];
+bodyTag.className += ' js';
+
+$( '.toggle-menu' ).on( 'click', function( e ) {
+  e.preventDefault();
+  $( 'nav.main ul' ).toggleClass( 'vis' );
+} );
+
+},{}],3:[function(require,module,exports){
+var linkElement, hidemenu, dropdown, dropping;
+
+function escHandler(e) {
+    if(e.keyCode == 27) {
+        window.clearTimeout(countdown);
+        var target = $("#interScreen p:first a").attr("href");
+        $("#interScreen").remove();
+        $('a[href="'+target+'"]').get(0).focus();
+        $("body").unbind("keydown",escHandler);
+        return false;
+    }
+    return true;
+}
+
+function dropMenu() {
+  dropping = 1;
+  $("#closeMenu").remove();
+  var menuItem = $(linkElement);
+  var target = menuItem.attr("href");
+  var position = menuItem.offset().left - 1;
+  $(target).css("left",position + "px");
+  var position = menuItem.offset().top + menuItem.outerHeight();
+  $(target).css("top",position + "px");
+  $(target).append("<a id='closeMenu' class='close' href='#'>close menu</a>");
+  $("a#closeMenu").click(function(e) {
+    e.preventDefault();
+    var myParent = $(this).parent().attr("id");
+    hideMenu();
+    $('a[href="#'+myParent+'"]').removeClass("active");
+    $('a[href="#'+myParent+'"]').get(0).focus();
+    $('a[href="#'+myParent+'"]').css("outline","none");
+  });
+  var height = $(target).show().height();
+  $(target).hide().css('height', 0);
+  $(target).show().animate({height: height}, 400, function() {
+    dropping = 0;
+  });
+  $(target+" a:first").get(0).focus();
+  $(target+" a:first").css("outline","none");
+  menuItem.addClass("active");
+  dropdown = 0;
+}
+
+function hideMenu() {
+    $(".active").removeClass("active");
+    $("#closeMenu").remove();
+    $("#subnav nav").slideUp();
+}
+
+/* trigger when page is ready */
+$(document).ready(function (){
+    skipNav();
+    $("#header nav a").mouseenter(function() {
+        window.clearTimeout(hidemenu);
+        var target = $(this).attr("href");
+        if (($(target).css("display") == "none") || (target == "/")) {
+            hideMenu();
+            linkElement = this;
+            dropdown = window.setTimeout(dropMenu, 500);
+        }
+        else {
+
+        }
+        return false;
+    }).mouseleave(function() {
+        hidemenu = window.setTimeout(hideMenu, 500);
+        window.clearTimeout(dropdown);
+        dropdown = 0;
+    }).click(function(e) {
+        if(dropping) {
+            return false;
+        }
+        var clicked = $(this);
+        var target = clicked.attr("href");
+        if(target == "/") {
+            return true;
+        }
+        if ( $(target).css("display") == "none") {
+            if(!dropdown && !dropping) {
+                hideMenu();
+                linkElement = this;
+                dropMenu();
+            }
+        }
+        else {
+            if(!dropping) {
+                hideMenu();
+            }
+        }
+        return false;
+    });
+    $("#subnav nav").mouseenter(function() {
+        window.clearTimeout(hidemenu);
+        window.clearTimeout(dropdown);
+        var hovering = "#" + $(this).attr("id");
+    }).mouseleave(function() {
+        var hovering = "";
+        hidemenu = window.setTimeout(hideMenu,500);
+    });
+    $(".inf input").keyup(function() {
+      if ($(this).val()) {
+        $(this).addClass("filled");
+      }
+      else {
+        $(this).removeClass("filled");
+      }
+    });
+    $(".inf textarea").keyup(function() {
+      if ($(this).val()) {
+        $(this).addClass("filled");
+      }
+      else {
+        $(this).removeClass("filled");
+      }
+    });
+    $(".signup,.signup2").submit(function() {
+        var form = $(this);
+        form.children("fieldset").children("p:last-child").children("button").attr("disabled","disabled");
+
+        $.ajax({
+            type: "POST",
+            url: $(this).attr("action"),
+            data: form.serialize(),
+            complete: function(req, status_msg) {
+                if(status_msg){
+                    form.children("fieldset").hide();
+                    var thanks;
+                    if(form.attr("data-thanks")) {
+                        thanks = form.attr("data-thanks");
+                    }
+                    else {
+                        thanks = "Thanks, we'll be in touch.";
+                    }
+                    form.html("<p>"+thanks+"</p>");
+                } else {
+                    form.children("fieldset").hide();
+                    form.append("<p>Something went wrong. Please try again later.</p>");
+                }
+            }
+        });
+        return false;
+    });
+    $("a > img").each(function() {
+        $(this).parent().addClass("noStyles");
+    });
+    $(".mini a").mouseup(function(){
+        var link = $(this).attr("href");
+        link = link.replace("http://","/");
+        link = link.replace("http://","/");
+        var tracker = "/v/topshare"+link;
+        _gaq.push(['_trackPageview',tracker]); });
+    $(".botshare a").mouseup(function(){
+        var link = $(this).attr("href");
+        link = link.replace("http://","/");
+        link = link.replace("http://","/");
+        var tracker = "/v/botshare"+link;
+        _gaq.push(['_trackPageview',tracker]);
+    });
+    $('iframe').each(function() {
+        var url = $(this).attr("src")
+        $(this).attr("src",url+"?wmode=transparent")
+    });
+    $('a[href$="pdf"]').each(function() {
+        $(this).addClass("pdf");
+    });
+});
+
+/* Skip nav to primary content link */
+
+function skipNav() {
+    var $skipLink = $('#skip-link');
+    $skipLink.click(function() {
+        $('#primary-content').focus();
+    });
+}
+
+
+/* SEARCH BOX */
+$(function(){
+
+    // on page-load, determin the right placeholder color
+    var searchLabelNd = $('#search_form label');
+    if($('#search_form #query').val())
+        searchLabelNd.fadeOut(50);
+    else
+        searchLabelNd.fadeIn(50);
+
+
+    // placeholder text Behavior on focus and blur
+    $('#search_form #query').focus(function(){
+        if($(this).val())
+            searchLabelNd.fadeOut(50);
+        else
+            searchLabelNd.fadeIn(50);
+    });
+
+    $('#search_form #query').keyup(function(){
+        if($('#search_form #query').val())
+            searchLabelNd.fadeOut(50);
+        else
+            searchLabelNd.fadeIn(50);
+    });
+
+    $('#search_form #query').blur(function(){
+        if($(this).val() == ''){
+            searchLabelNd.fadeIn(50);
+        }else{
+            searchLabelNd.fadeOut(50);
+        }
+    });
+
+});
+
+/* END SEARCH BOX */
+
+},{}],4:[function(require,module,exports){
+'use strict';
+
+var sideNav = {
+  toggleCheck: function() {
+    var $navBtn = $( '.nav-secondary_link__button' ),
+      $navContent = $( '.nav-secondary .expandable_content' ),
+      $nav = $( '.nav-secondary.expandable' );
+
+    // if button is visible, it's an expandable
+    if ( $navBtn.css( 'display' ) !== 'none' &&
+         !$nav.hasClass( 'expandable__expanded' )
+    ) {
+      // hide content if it's not expanded
+      $navContent.css( 'display', 'none' );
+    } else {
+      $navContent.css( 'display', 'block' );
+    }
+  }
+}
+
+module.exports = sideNav;
+
+},{}],5:[function(require,module,exports){
+/**
+ * cf-expandables
+ * https://github.com/cfpb/cf-expandables
+ *
+ * A public domain work of the Consumer Financial Protection Bureau
+ */
+
+(function( $ ) {
+
+  $.fn.expandable = function( userSettings ) {
+
+    return $( this ).each(function() {
+
+      var $this = $( this ),
+          $target = $this.find('.expandable_target').not( $this.find('.expandable .expandable_target') ),
+          $cueOpen = $this.find('.expandable_cue-open').not( $this.find('.expandable .expandable_cue-open') ),
+          $cueClose = $this.find('.expandable_cue-close').not( $this.find('.expandable .expandable_cue-close') ),
+          $content = $this.find('.expandable_content').not( $this.find('.expandable .expandable_content') ),
+          $groupParent = $this.parents('.expandable-group'),
+          accordion = $groupParent.length > 0 && $groupParent.data('accordion');
+
+      if ( accordion ) {
+        var $siblings = $this.siblings('.expandable');
+      }
+
+      this.init = function() {
+        // Todo: recommend using an id on all expandables so that we can use
+        // the aria-controls attribute.
+        $target.attr( 'aria-controls', $content.attr('id') );
+        if ( $this.hasClass('expandable__expanded') ) {
+          this.expand( 0 );
+        } else {
+          this.collapse( 0 );
+        }
+        $target.on( 'click', $.proxy( this.handleClick, this ) );
+      };
+
+      this.handleClick = function( ev ) {
+        ev.preventDefault();
+        ev.stopPropagation();
+        this.toggle();
+        if ( accordion ) {
+          $siblings.each( function( index, sibling ) {
+            sibling.collapse();
+          });
+        }
+      };
+
+      this.toggle = function() {
+        if ( $target.attr('aria-pressed') === 'true' ) {
+          this.collapse();
+        } else {
+          this.expand();
+        }
+      };
+
+      this.expand = function( duration ) {
+        $cueOpen.css( 'display', 'none' );
+        $cueClose.css( 'display', 'inline' );
+        $content.attr( 'aria-expanded', 'true' );
+        $target.attr( 'aria-pressed', 'true' );
+        if ( typeof duration === 'undefined' ) {
+          duration = $.fn.expandable.calculateExpandDuration( $content.height() );
+        }
+        $this.addClass('expandable__expanded');
+        $content.slideDown({
+          duration: duration,
+          easing: 'easeOutExpo'
+        });
+      };
+
+      this.collapse = function( duration ) {
+        $cueOpen.css( 'display', 'inline' );
+        $cueClose.css( 'display', 'none' );
+        $content.attr( 'aria-expanded', 'false' );
+        $target.attr( 'aria-pressed', 'false' );
+        if ( typeof duration === 'undefined' ) {
+          duration = $.fn.expandable.calculateCollapseDuration( $content.height() );
+        }
+        $this.removeClass('expandable__expanded');
+        $content.slideUp({
+          duration: duration,
+          easing: 'easeOutExpo'
+        });
+      };
+
+      this.init();
+
+    });
+
+  };
+
+  $.fn.expandable.calculateExpandDuration = function( height ) {
+    return $.fn.expandable.constrainValue( 450, 900, height * 4 );
+  };
+
+  $.fn.expandable.calculateCollapseDuration = function( height ) {
+    return $.fn.expandable.constrainValue( 350, 900, height * 2 );
+  };
+
+  $.fn.expandable.constrainValue = function( min, max, duration ) {
+    if ( duration > max ) {
+        return max;
+    } else if ( duration < min ) {
+        return min;
+    } else {
+        return duration;
+    }
+  };
+
+  // Auto init
+  $('.expandable').expandable();
+
+}(jQuery));
+
+},{}],6:[function(require,module,exports){
+/*
+ * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
+ *
+ * Uses the built in easing capabilities added In jQuery 1.1
+ * to offer multiple easing options
+ *
+ * TERMS OF USE - jQuery Easing
+ * 
+ * Open source under the BSD License. 
+ * 
+ * Copyright © 2008 George McGinley Smith
+ * All rights reserved.
+ * 
+ * Redistribution and use in source and binary forms, with or without modification, 
+ * are permitted provided that the following conditions are met:
+ * 
+ * Redistributions of source code must retain the above copyright notice, this list of 
+ * conditions and the following disclaimer.
+ * Redistributions in binary form must reproduce the above copyright notice, this list 
+ * of conditions and the following disclaimer in the documentation and/or other materials 
+ * provided with the distribution.
+ * 
+ * Neither the name of the author nor the names of contributors may be used to endorse 
+ * or promote products derived from this software without specific prior written permission.
+ * 
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY 
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+ *  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED 
+ * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
+ * OF THE POSSIBILITY OF SUCH DAMAGE. 
+ *
+*/
+
+// t: current time, b: begInnIng value, c: change In value, d: duration
+jQuery.easing['jswing'] = jQuery.easing['swing'];
+
+jQuery.extend( jQuery.easing,
+{
+	def: 'easeOutQuad',
+	swing: function (x, t, b, c, d) {
+		//alert(jQuery.easing.default);
+		return jQuery.easing[jQuery.easing.def](x, t, b, c, d);
+	},
+	easeInQuad: function (x, t, b, c, d) {
+		return c*(t/=d)*t + b;
+	},
+	easeOutQuad: function (x, t, b, c, d) {
+		return -c *(t/=d)*(t-2) + b;
+	},
+	easeInOutQuad: function (x, t, b, c, d) {
+		if ((t/=d/2) < 1) return c/2*t*t + b;
+		return -c/2 * ((--t)*(t-2) - 1) + b;
+	},
+	easeInCubic: function (x, t, b, c, d) {
+		return c*(t/=d)*t*t + b;
+	},
+	easeOutCubic: function (x, t, b, c, d) {
+		return c*((t=t/d-1)*t*t + 1) + b;
+	},
+	easeInOutCubic: function (x, t, b, c, d) {
+		if ((t/=d/2) < 1) return c/2*t*t*t + b;
+		return c/2*((t-=2)*t*t + 2) + b;
+	},
+	easeInQuart: function (x, t, b, c, d) {
+		return c*(t/=d)*t*t*t + b;
+	},
+	easeOutQuart: function (x, t, b, c, d) {
+		return -c * ((t=t/d-1)*t*t*t - 1) + b;
+	},
+	easeInOutQuart: function (x, t, b, c, d) {
+		if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
+		return -c/2 * ((t-=2)*t*t*t - 2) + b;
+	},
+	easeInQuint: function (x, t, b, c, d) {
+		return c*(t/=d)*t*t*t*t + b;
+	},
+	easeOutQuint: function (x, t, b, c, d) {
+		return c*((t=t/d-1)*t*t*t*t + 1) + b;
+	},
+	easeInOutQuint: function (x, t, b, c, d) {
+		if ((t/=d/2) < 1) return c/2*t*t*t*t*t + b;
+		return c/2*((t-=2)*t*t*t*t + 2) + b;
+	},
+	easeInSine: function (x, t, b, c, d) {
+		return -c * Math.cos(t/d * (Math.PI/2)) + c + b;
+	},
+	easeOutSine: function (x, t, b, c, d) {
+		return c * Math.sin(t/d * (Math.PI/2)) + b;
+	},
+	easeInOutSine: function (x, t, b, c, d) {
+		return -c/2 * (Math.cos(Math.PI*t/d) - 1) + b;
+	},
+	easeInExpo: function (x, t, b, c, d) {
+		return (t==0) ? b : c * Math.pow(2, 10 * (t/d - 1)) + b;
+	},
+	easeOutExpo: function (x, t, b, c, d) {
+		return (t==d) ? b+c : c * (-Math.pow(2, -10 * t/d) + 1) + b;
+	},
+	easeInOutExpo: function (x, t, b, c, d) {
+		if (t==0) return b;
+		if (t==d) return b+c;
+		if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
+		return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;
+	},
+	easeInCirc: function (x, t, b, c, d) {
+		return -c * (Math.sqrt(1 - (t/=d)*t) - 1) + b;
+	},
+	easeOutCirc: function (x, t, b, c, d) {
+		return c * Math.sqrt(1 - (t=t/d-1)*t) + b;
+	},
+	easeInOutCirc: function (x, t, b, c, d) {
+		if ((t/=d/2) < 1) return -c/2 * (Math.sqrt(1 - t*t) - 1) + b;
+		return c/2 * (Math.sqrt(1 - (t-=2)*t) + 1) + b;
+	},
+	easeInElastic: function (x, t, b, c, d) {
+		var s=1.70158;var p=0;var a=c;
+		if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
+		if (a < Math.abs(c)) { a=c; var s=p/4; }
+		else var s = p/(2*Math.PI) * Math.asin (c/a);
+		return -(a*Math.pow(2,10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )) + b;
+	},
+	easeOutElastic: function (x, t, b, c, d) {
+		var s=1.70158;var p=0;var a=c;
+		if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
+		if (a < Math.abs(c)) { a=c; var s=p/4; }
+		else var s = p/(2*Math.PI) * Math.asin (c/a);
+		return a*Math.pow(2,-10*t) * Math.sin( (t*d-s)*(2*Math.PI)/p ) + c + b;
+	},
+	easeInOutElastic: function (x, t, b, c, d) {
+		var s=1.70158;var p=0;var a=c;
+		if (t==0) return b;  if ((t/=d/2)==2) return b+c;  if (!p) p=d*(.3*1.5);
+		if (a < Math.abs(c)) { a=c; var s=p/4; }
+		else var s = p/(2*Math.PI) * Math.asin (c/a);
+		if (t < 1) return -.5*(a*Math.pow(2,10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )) + b;
+		return a*Math.pow(2,-10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )*.5 + c + b;
+	},
+	easeInBack: function (x, t, b, c, d, s) {
+		if (s == undefined) s = 1.70158;
+		return c*(t/=d)*t*((s+1)*t - s) + b;
+	},
+	easeOutBack: function (x, t, b, c, d, s) {
+		if (s == undefined) s = 1.70158;
+		return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
+	},
+	easeInOutBack: function (x, t, b, c, d, s) {
+		if (s == undefined) s = 1.70158; 
+		if ((t/=d/2) < 1) return c/2*(t*t*(((s*=(1.525))+1)*t - s)) + b;
+		return c/2*((t-=2)*t*(((s*=(1.525))+1)*t + s) + 2) + b;
+	},
+	easeInBounce: function (x, t, b, c, d) {
+		return c - jQuery.easing.easeOutBounce (x, d-t, 0, c, d) + b;
+	},
+	easeOutBounce: function (x, t, b, c, d) {
+		if ((t/=d) < (1/2.75)) {
+			return c*(7.5625*t*t) + b;
+		} else if (t < (2/2.75)) {
+			return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
+		} else if (t < (2.5/2.75)) {
+			return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
+		} else {
+			return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
+		}
+	},
+	easeInOutBounce: function (x, t, b, c, d) {
+		if (t < d/2) return jQuery.easing.easeInBounce (x, t*2, 0, c, d) * .5 + b;
+		return jQuery.easing.easeOutBounce (x, t*2-d, 0, c, d) * .5 + c*.5 + b;
+	}
+});
+
+/*
+ *
+ * TERMS OF USE - EASING EQUATIONS
+ * 
+ * Open source under the BSD License. 
+ * 
+ * Copyright © 2001 Robert Penner
+ * All rights reserved.
+ * 
+ * Redistribution and use in source and binary forms, with or without modification, 
+ * are permitted provided that the following conditions are met:
+ * 
+ * Redistributions of source code must retain the above copyright notice, this list of 
+ * conditions and the following disclaimer.
+ * Redistributions in binary form must reproduce the above copyright notice, this list 
+ * of conditions and the following disclaimer in the documentation and/or other materials 
+ * provided with the distribution.
+ * 
+ * Neither the name of the author nor the names of contributors may be used to endorse 
+ * or promote products derived from this software without specific prior written permission.
+ * 
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY 
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+ *  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED 
+ * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
+ * OF THE POSSIBILITY OF SUCH DAMAGE. 
+ *
+ */
+},{}]},{},[1])
+
+
 //# sourceMappingURL=main.js.map

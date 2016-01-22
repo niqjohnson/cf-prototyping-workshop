@@ -17,4 +17,5 @@ gulp.task( 'watch', [ 'scripts', 'styles', 'images', 'copy', 'browserSync' ], fu
   gulp.watch( config.styles.cwd + '/**/*.less', [ 'styles', reload ] );
   gulp.watch( config.images.src, [ 'images', reload ] );
   gulp.watch( config.copy.files.src, [ 'copy:files', reload ] );
+  gulp.watch( config.copy.vendorjs.src, [ 'copy:vendorjs', reload ] );
 } );

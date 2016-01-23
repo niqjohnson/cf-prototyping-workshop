@@ -155,32 +155,50 @@ Creating truly custom enhancements is way too big a topic for this workshop, but
 <script src="../js/{library-name}.js"></script>
 ```
 
-Refer to that library’s documentation to see how it works.
-
 - **[jQuery.scrollTo](http://demos.flesler.com/jquery/scrollTo/)** is a nice little library to let you smoothly scroll to any part of the page.
 - **[jquery.sticky-kit](http://leafo.net/sticky-kit/)** makes elements “sticky” as you scroll.
 
 If you find more libraries you’d like to use, adding them to your prototype is pretty easy. Just download the library’s Javascript file and drop it into `src/vendor/prototype`. If you have `gulp watch` running in a terminal tab, you just need to add the usual `<script src="../js/{library-name}.js"></script>` line to the end of the `<head>`.
 
-Fill in additional elements and interactions as needed (GitHub is a good place to look)
-
-Web inspector
+If you’re looking for good enhancements, GitHub is a great place to start. I check GitHub’s [trending repositories](https://github.com/trending) for inspiration every so often and [star stuff that looks useful](https://github.com/stars/niqjohnson).
 
 ### Share
 
-Publish (GitHub pages)
+Once of the biggest benefits of designing in the browser is that other people can look at your designs in their native context, the browser. And one of the biggest benefits of all the setup we went through earlier is that gulp packages up your prototype in a nice, shareable folder, `dist`. To share the prototype, all you have to do is plop `dist` on a server accessible by the people you want to share it with.
 
-### Review and test
+I like to use GitHub Pages to share my prototypes. Here’s my usual process for setting it up:
 
-Getting feedback can be hard (PDF, screenshots, etc.)
+1. When you’re ready to share your prototype, make a branch from `master` called `gh-pages`. If you’re using git via the command line, you can do that from your repository with `git checkout -b gh-pages`.
 
-[Blipshot](https://chrome.google.com/webstore/detail/blipshot-%E2%80%94-one-click-scre/mdaboflcmhejfihjcbmdiebgfchigjcf)
+2. I like to delete everything other than `dist` from my `gh-pages` branch. This isn’t a necessary step, but I like to keep what I share as cleaned up as possible.
 
-[jQuery.autotype](https://github.com/mmonteleone/jquery.autotype)
+3. I also like to then rename `dist` to something like `v1`. That way, if you want to share multiple versions with people, you can point them to URLs like `v1/prototype` and `v2/prototype`.
+
+4. When I’ve got all the files where I want them, I stage the changes (from the command line, just `git add .`), commit them (`git commit -m 'Set up GH pages'`), and push them to GitHub (`git push origin gh-pages`).
+
+Once the files are pushed to GitHub, they’ll be viewable at either `{username}.github.io/cf-prototyping-workshop/v1/prototype/` (if your repo is on github.com) or `{github.enterprise.url}/pages/{username}/cf-prototyping-workshop/v1/prototype/` (if your repo is in GitHub Enterprise).
+
+If GitHub pages won’t work for your project, you can put the files in `dist` on any web server instead.
+
+### Get feedback
+
+With your prototype now accessible to anyone with the link, you’re ready to gather feedback to help you decide what to focus on in your next iteration.
+
+Getting feedback on a prototype in the browser can be a mixed blessing. On one hand, reviewers or testers can interact with the design on any device as they normally would, giving them a much better sense of how the design will actually work. On the other hand, sometimes showing designs in the browser sets expectations too high—if a placeholder link doesn’t work or if the reviewer insists on using IE8, the feedback you get may be more about the process of prototyping than on the actual prototype.
+
+I use a few methods to get around these drawbacks.
+
+- First, I always preface showing anyone the design (or emailing them the link) with a warning that this is just a prototype and some things might not work. I’ll specifically call out any big features that I know aren’t working yet (“we’re planning to make that sidebar sticky but haven’t gotten to it yet”).
+
+- If I know I need feedback from someone who regularly ignores such warnings, sometimes I’ll send screenshots instead. [Blipshot](https://chrome.google.com/webstore/detail/blipshot-%E2%80%94-one-click-scre/mdaboflcmhejfihjcbmdiebgfchigjcf) is an amazing Chrome extension that takes a screenshot of the entire page. [Awesome Screenshot](https://itunes.apple.com/us/app/awesome-screenshot-for-safari/id918780145?mt=8) does the same thing in Mobile Safari. (Those two tools come in handy in a million other situations, too.)
+
+- Often I’ll have the prototype set up for only one particular path a user could take or not want the reviewer to have to go through filling in a bunch of form fields. In those cases, I’ll use [jQuery.autotype](https://github.com/mmonteleone/jquery.autotype) to fake filling in form fields.
 
 ### Iterate
 
-Run `gulp watch` every time you want to work.
+Iterating on your design using the feedback you’ve gotten repeats a lot of the process you’ve used so far: start with basic components, enhance as needed, share, repeat.
+
+One nice change is that you don’t have to go through all those initial setup steps again. Just run `gulp watch` in a terminal tab every time you want to work on your design, and the prototype will be viewable at `http://localhost:3000/dist/prototype/`.
 
 ## Misc.
 

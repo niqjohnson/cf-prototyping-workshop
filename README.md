@@ -168,13 +168,15 @@ Once of the biggest benefits of designing in the browser is that other people ca
 
 I like to use GitHub Pages to share my prototypes. Here’s my usual process for setting it up:
 
-1. When you’re ready to share your prototype, make a branch from `master` called `gh-pages`. If you’re using git via the command line, you can do that from your repository with `git checkout -b gh-pages`.
+1. When you’re ready to share your prototype, first commit all the changes you’ve made. If you’re using git via the command line, you can do that from your repository with `git commit -am 'Update prototype'`.
 
-2. I like to delete everything other than `dist` from my `gh-pages` branch. This isn’t a necessary step, but I like to keep what I share as cleaned up as possible.
+2. Next, make a branch from `master` called `gh-pages`. From the command line, that’s `git checkout -b gh-pages`.
 
-3. I also like to then rename `dist` to something like `v1`. That way, if you want to share multiple versions with people, you can point them to URLs like `v1/prototype` and `v2/prototype`.
+3. I like to delete everything other than `dist` from my `gh-pages` branch. This isn’t a necessary step, but I like to keep what I share as cleaned up as possible.
 
-4. When I’ve got all the files where I want them, I stage the changes (from the command line, just `git add .`), commit them (`git commit -m 'Set up GH pages'`), and push them to GitHub (`git push origin gh-pages`).
+4. I also like to then rename `dist` to something like `v1`. That way, if you want to share multiple versions with people, you can point them to URLs like `v1/prototype` and `v2/prototype`.
+
+5. When I’ve got all the files where I want them, I commit all the changes (`git commit -am 'Set up GH pages'`) and push them to GitHub (`git push origin gh-pages`).
 
 Once the files are pushed to GitHub, they’ll be viewable at either `{username}.github.io/cf-prototyping-workshop/v1/prototype/` (if your repo is on github.com) or `{github.enterprise.url}/pages/{username}/cf-prototyping-workshop/v1/prototype/` (if your repo is in GitHub Enterprise).
 

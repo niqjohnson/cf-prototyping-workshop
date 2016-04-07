@@ -4,6 +4,7 @@ require( './utils/nemo' );
 require( './utils/nemo-shim' );
 require ( '../vendor/jquery.easing/js/jquery.easing.js' );
 require ( '../vendor/cf-expandables/src/js/cf-expandables' );
+require ( '../vendor/cf-tables/src/cf-tables' );
 
 var sideNav = require( './utils/side-nav' );
 

@@ -11037,6 +11037,7 @@ require ( '../vendor/cf-expandables/src/js/cf-expandables' );
 require ( '../vendor/cf-tables/src/cf-tables' );
 
 var sideNav = require( './utils/side-nav' );
+var notYet = require( './utils/not-yet' );
 
 $(document).ready( function () {
 
@@ -11049,12 +11050,15 @@ $(document).ready( function () {
     sideNav.toggleCheck();
   }
 
+  // Disable placeholder links and forms
+  notYet.init();
+
   // Start writing your prototype's custom JS here
 
 
 });
 
-},{"../vendor/cf-expandables/src/js/cf-expandables":6,"../vendor/cf-tables/src/cf-tables":7,"../vendor/jquery.easing/js/jquery.easing.js":8,"./utils/nemo":4,"./utils/nemo-shim":3,"./utils/side-nav":5}],3:[function(require,module,exports){
+},{"../vendor/cf-expandables/src/js/cf-expandables":7,"../vendor/cf-tables/src/cf-tables":8,"../vendor/jquery.easing/js/jquery.easing.js":9,"./utils/nemo":4,"./utils/nemo-shim":3,"./utils/not-yet":5,"./utils/side-nav":6}],3:[function(require,module,exports){
 'use strict';
 
 // To play nicer with nemo, add js class to body element
@@ -11285,6 +11289,28 @@ $(function(){
 },{}],5:[function(require,module,exports){
 'use strict';
 
+var notYet = {
+  init: function() {
+    var $placeholderLinks = $( 'a[href="#not-yet"]' ),
+        $placeholderForms = $( 'form[action="#not-yet"]' );
+
+    $placeholderLinks.on( 'click', function( event ) {
+      event.preventDefault();
+      alert( 'This link is just a placeholder' );
+    });
+
+    $placeholderForms.on( 'submit', function( event ) {
+      event.preventDefault();
+      alert( 'This form is just a placeholder' );
+    });
+  }
+}
+
+module.exports = notYet;
+
+},{}],6:[function(require,module,exports){
+'use strict';
+
 var sideNav = {
   toggleCheck: function() {
     var $navBtn = $( '.nav-secondary_link__button' ),
@@ -11305,7 +11331,7 @@ var sideNav = {
 
 module.exports = sideNav;
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 /**
  * cf-expandables
  * https://github.com/cfpb/cf-expandables
@@ -11421,7 +11447,7 @@ module.exports = sideNav;
 
 }(jQuery));
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 (function (global){
 /**
  * cf-tables
@@ -11590,7 +11616,7 @@ global.jQuery = require('jquery');
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"jquery":1}],8:[function(require,module,exports){
+},{"jquery":1}],9:[function(require,module,exports){
 /*
  * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
  *

@@ -191,6 +191,7 @@ Getting feedback on a prototype in the browser can be a mixed blessing. On one h
 I use a few methods to get around these drawbacks.
 
 - First, I always preface showing anyone the design (or emailing them the link) with a warning that this is just a prototype and some things might not work. I’ll specifically call out any big features that I know aren’t working yet (“we’re planning to make that sidebar sticky but haven’t gotten to it yet”).
+  - Links that don’t yet go anywhere and forms that don’t yet submit are high on the list of things I’ve seen provoke the “hey it’s broken!” response. I’ve included a little JavaScript utility here to head off those comments. For placeholder links in your prototype, just do `href="#not-yet"`; for placeholder forms, do `action="#not-yet"`. When those links are clicked or those forms are submitted, an alert will pop up letting your reviewers know those elements aren’t working yet.
 
 - If I know I need feedback from someone who regularly ignores such warnings, sometimes I’ll send screenshots instead. [Blipshot](https://chrome.google.com/webstore/detail/blipshot-%E2%80%94-one-click-scre/mdaboflcmhejfihjcbmdiebgfchigjcf) is an amazing Chrome extension that takes a screenshot of the entire page. [Awesome Screenshot](https://itunes.apple.com/us/app/awesome-screenshot-for-safari/id918780145?mt=8) does the same thing in Mobile Safari. (Those two tools come in handy in a million other situations, too.)
 
@@ -201,7 +202,3 @@ I use a few methods to get around these drawbacks.
 Iterating on your design using the feedback you’ve gotten repeats a lot of the process you’ve used so far: start with basic components, enhance as needed, share, repeat.
 
 One nice change is that you don’t have to go through all those initial setup steps again. Just run `gulp watch` in a terminal tab every time you want to work on your design, and the prototype will be viewable at `http://localhost:3000/dist/prototype/`.
-
-## Misc.
-
-- "Not yet" links if there's time to add tooltips

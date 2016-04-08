@@ -7,6 +7,7 @@ require ( '../vendor/cf-expandables/src/js/cf-expandables' );
 require ( '../vendor/cf-tables/src/cf-tables' );
 
 var sideNav = require( './utils/side-nav' );
+var notYet = require( './utils/not-yet' );
 
 $(document).ready( function () {
 
@@ -18,6 +19,9 @@ $(document).ready( function () {
 
     sideNav.toggleCheck();
   }
+
+  // Disable placeholder links and forms
+  notYet.init();
 
   // Start writing your prototype's custom JS here
 

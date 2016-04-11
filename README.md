@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repository goes along with a workshop given at the Consumer Financial Protection Bureau January 26, 2016. It’s meant for designer types who are comfortable enough with front-end web stuff (HTML, CSS, Javascript) to copy and paste examples and to write some basic custom code.
+This repository goes along with a workshop given at the Consumer Financial Protection Bureau April 12, 2016. It’s meant for designer types who are comfortable enough with front-end web stuff (HTML, CSS, Javascript) to copy and paste examples and to write some basic custom code.
 
 Even if you weren’t at the workshop, you should still be able to follow along on your own just by reading this readme. If you have any questions, get in touch with me via my GitHub profile and I’ll do my best to help.
 

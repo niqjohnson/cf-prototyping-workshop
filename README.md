@@ -101,14 +101,14 @@ This repo uses a very, very basic version of the standard CFPB front-end setup (
             <pre>gulp</pre>
         </div>
         <p>
-            Finally (this is the best part), turn your machine into a web server that MAGICALLY REFRESHES EVERY TIME YOU SAVE CHANGES by typing (you might want to do this in a new terminal tab, since the `gulp watch` process will run continuously):
+            Finally (this is the best part), turn your machine into a web server that MAGICALLY REFRESHES EVERY TIME YOU SAVE CHANGES by typing (you might want to do this in a new terminal tab, since the <code>gulp watch</code> process will run continuously):
         </p>
 
         <div class="highlight">
             <pre>gulp watch</pre>
         </div>
         <p>
-            That should open up a tab in your default browser that loads <code>http://localhost:3000/dist/prototype/</code>. You’re all set to start working! If you need to stop `gulp watch` for any reason, just hit `control + c` in the terminal tab it’s running in.
+            That should open up a tab in your default browser that loads <code>http://localhost:3000/dist/prototype/</code>. You’re all set to start working! If you need to stop `gulp watch` for any reason, just hit <code>control + c</code> in the terminal tab it’s running in.
         </p>
     </li>
 </ol>

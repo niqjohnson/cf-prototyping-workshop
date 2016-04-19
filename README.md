@@ -166,17 +166,17 @@ If you’re looking for good enhancements, GitHub is a great place to start. I c
 
 Once of the biggest benefits of designing in the browser is that other people can look at your designs in their native context, the browser. And one of the biggest benefits of all the setup we went through earlier is that gulp packages up your prototype in a nice, shareable folder, `dist`. To share the prototype, all you have to do is plop `dist` on a server accessible by the people you want to share it with.
 
-I like to use GitHub Pages to share my prototypes. Here’s my usual process for setting it up:
+I like to use GitHub Pages to share my prototypes. Here’s my usual process for setting it up (to make things easier, I’ve already created a minimal `gh-pages` branch—the magic branch that tells GitHub to serve anything in it as a plain old website—in this repository):
 
 1. When you’re ready to share your prototype, first commit all the changes you’ve made. If you’re using git via the command line, you can do that from your repository with `git commit -am 'Update prototype'`.
 
-2. Next, make a branch from `master` called `gh-pages`. From the command line, that’s `git checkout -b gh-pages`.
+2. Next, copy the entire `dist` folder somewhere outside the repository (like your desktop). I like to rename this copy something like “v1” so that as I continue iterating (“v2, v3, v4”) I can easily look back at older versions.
 
-3. I like to delete everything other than `dist` from my `gh-pages` branch. This isn’t a necessary step, but I like to keep what I share as cleaned up as possible.
+3. Switch to the `gh-pages` branch with `git checkout gh-pages`.
 
-4. I also like to then rename `dist` to something like `v1`. That way, if you want to share multiple versions with people, you can point them to URLs like `v1/prototype` and `v2/prototype`.
+4. Move the `v1` folder on your desktop into the `gh-pages` branch of the repository.
 
-5. When I’ve got all the files where I want them, I commit all the changes (`git commit -am 'Set up GH pages'`) and push them to GitHub (`git push origin gh-pages`).
+5. Commit all the changes (`git commit -am 'Publish version 1'`) and push them to GitHub (`git push origin gh-pages`).
 
 Once the files are pushed to GitHub, they’ll be viewable at either `{username}.github.io/cf-prototyping-workshop/v1/prototype/` (if your repo is on github.com) or `{github.enterprise.url}/pages/{username}/cf-prototyping-workshop/v1/prototype/` (if your repo is in GitHub Enterprise).
 
